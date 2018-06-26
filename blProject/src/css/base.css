@@ -14,7 +14,7 @@ a {text-decoration:none; }
 .clearfix{
     *zoom:1;
 }
-html,body{width: 100%;}
+html,body{height: 100%;}
 h1,h2,h3,h4,h5,h6 {font-weight:normal;font-size:1em;}
 s,i,em{font-style:normal;text-decoration:none;}
 

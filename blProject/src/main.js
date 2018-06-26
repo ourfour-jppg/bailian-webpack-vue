@@ -11,6 +11,8 @@ Vue.use(Weui);
 import 'mint-ui/lib/style.css';
 import baseCss from './css/base.css'
 
+import weui from './css/weui.css'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
