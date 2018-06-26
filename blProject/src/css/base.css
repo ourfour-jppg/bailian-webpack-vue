@@ -37,3 +37,8 @@ s,i,em{font-style:normal;text-decoration:none;}
 .f14{ font-size: 0.18rem;}
 .f16{ font-size: 0.21rem;}
 .f18{ font-size: 0.24rem;}
+.f12{ font-size: 12px;}
+.f14{ font-size: 14px;}
+.f16{ font-size: 16px;}
+.f18{ font-size: 18px;}
+body{font-family: "PingFangSC-Regular",Helvetica,sans-serif;}
