@@ -3,13 +3,12 @@
 import Vue from 'vue'
 
 import App from './App'
-import $ from 'jquery'
+// import $ from 'jquery'
 import router from './router'
 import css from './css/base.css'
 import fonts from '../static/fonts/iconfont.css'
 
 // import App from './App'
-import router from './router'
 
 //import Mint from 'mint-ui'
 //import Weui from 'weui'
@@ -38,8 +37,5 @@ new Vue({
   router,
 
   // components: { App },
-  template: `<router-view></router-view>`
-
-  components: { },
-  template: '<router-view></router-view>'
+  template: `<router-view></router-view>`,
 })
