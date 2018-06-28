@@ -98,11 +98,11 @@
 
 .icon-back:before { content: "\e610"; }/*详情页：返回图标>*/
 
-.icon-message:before { content: "\e618"; }/*详情页：头部消息>*/
+.icon-message:before { content: "\e618"; }/*详情页：头部消息*/
 
-.icon-fenlei2:before { content: "\e61d"; }/*详情页：头部消息>*/
+.icon-fenlei2:before { content: "\e61d"; }/*详情页：头部消息*/
 
-.icon-tubiaolunkuo-:before { content: "\e60d"; }/*详情页：客服>*/
+.icon-tubiaolunkuo-:before { content: "\e60d"; }/*详情页：客服*/
 
 .icon-xiangyou:before { content: "\e7ad"; }/*详情页：实心向右三角形*/
 
@@ -114,6 +114,7 @@
 .icon-danxuankuangxuanzhong:before { content: "\e7d5"; }/*购物车页面：订单选中时勾选图标*/
 
 .icon-gou:before { content: "\e613"; }/*购物车页面：勾选商品后的图标>*/
+.icon-weixuanzhongyuanquan:before { content: "\f0129"; }
 
 .icon-xiala:before { content: "\e822"; }/*下拉图标*/
 
