@@ -46,6 +46,7 @@
 	export default{
 		props:['index'],
 		data(){
+			console.log(this)
 			// li:{
 				// 	Default:1,
 				// 	list:[{
@@ -71,17 +72,19 @@
 					},
 					mse:''
 				}
+				if(this.index!=-1){
+					let data1=this.$root.ress.list[this.index]
+					//console.log(data1)
+					data.name=data1.name;
+					data.phone=data1.phone;
+					data.site=data1.site;
+				}
 				$.get('./static/region.json',(res)=>{
 					this.city_list=res.regions
 					this.city.sheng=this.recity([])
 					console.log(this.index)
 					if(this.index!=-1){
 						console.log(this.$root.ress.list[this.index])
-						let data=this.$root.ress.list[this.index]
-						this.name=data.name;
-						this.phone=data.phone;
-						this.site=data.site;
-						// this.city.sheng=recity(this.site.[0])
 						this.city.shi=this.recity([this.site[0]])
 						this.city.xian=this.recity([this.site[0],this.site[1]])
 					}
@@ -128,9 +131,9 @@
 						phone:this.phone,
 						site:this.site
 					}
-				let yz=true;
+				let yz=true;//验证是否通过
 				if(data.name.length>10 || data.name==''){
-					this.mse='字符过长了!!!'
+					this.mse='收件人名错误'
 					yz=false
 				}else if(!data.phone.match(/^1[3,4,5,8]\d[\s,-]?\d{4}[\s,-]?\d{4}$/ig)){
 					this.mse='手机号错误'
@@ -139,11 +142,7 @@
 					this.mse='请填写地址'
 					yz=false
 				}
-
-
-
-
-
+				//通过则执行
 				if(yz){
 					if(!this.$root.ress){
 						this.$root.ress={
@@ -227,6 +226,9 @@
 		font-size: 0.6rem;
 		color:#ccc;
 		/*width: ;*/
+	}
+	ul p{
+		line-height: 1.133333rem;
 	}
 	.mes{
 		color:red;

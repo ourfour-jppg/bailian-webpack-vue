@@ -1,6 +1,6 @@
 <template>
 	<div style="position: relative;overflow: hidden; height: 3.466667rem;">
-		<ul class="box_ul" id='baner_ul_vue' :style='{width:w_width*img_url.length+"px",left:0}' @touchstart='start($event)'>
+		<ul class="box_ul baner_ul_vue" :style='{width:w_width*img_url.length+"px",left:0}' @touchstart='start($event)'>
 			<img v-for='url in img_url' :src="url" :style="{width:w_width+'px'}">
 		</ul>
 		<ul class="list" :style='list'>
@@ -33,38 +33,33 @@ export default{
 		data.list.left=data.w_width/2+'px';
 
 		$.post('http://m.bl.com/h5-web/page/queryAdvertByResourceId.index',{resourceId: 7250,adv:'',cookieId:'' },(res)=>{
-			this.ul=$('#baner_ul_vue')
-			// console.log(res.obj)
+			// 获取uljq对象元素
+			this.ul=$('.baner_ul_vue',$(this.$el))
+			//遍历obj获取地址并且添加到img_url变量中
 			res.obj.map((obj)=>{
 				this.img_url.push(obj.imgPath)
 				this.list.num.push(0)
 			})
-			data.list.width=this.img_url.length*0.32 +'rem'
-			this.img_url.push(this.img_url[0])
+			data.list.width=this.img_url.length*0.32 +'rem'//设置指示器总宽度
+			this.img_url.push(this.img_url[0])//复制第一张
 			console.log(this.img_url)
 		})
 		return data;
 	},
 	methods:{
+		//手指触摸事件处理
 		start (e){
-			// console.log(this.ul.left)
-			// 停止动画
-			$(e.path[1]).stop()
-			clearInterval(this.time)
-			// 获取手指
-			let t_e=e.targetTouches[0]
-			//获取ul,手指对象里的target为手指所在的元素也就是img
-			//所以要获取他上一级
-			let target=$(e.path[1])
+			$(e.path[1]).stop()// 停止之前的动画
+			clearInterval(this.time)//停止上一个计时器
+			let t_e=e.targetTouches[0]// 获取手指事件
+			let target=$(e.path[1])//获取ul而不是img,里target为手指所在的元素img所以要获取他上一级
 			// 记录按下时坐标和手指位置
 			this.p.left=parseInt(target.css('left'))
-			
 			this.p.x=t_e.pageX
-			//手指移动
+			//添加手指移动事件
 			target[0].ontouchmove=(e)=>{
 				// 获取手指
 				t_e=e.targetTouches[0]
-				
 				let left=t_e.pageX-this.p.x+this.p.left
 				// 判断是否第一张
 				if(left>0){
@@ -73,69 +68,59 @@ export default{
 				// 判断是否到最后
 				let ul_width=parseInt($(e.path[1]).css('width'))
 				if( (left*-1)> ul_width-this.w_width){
-					left=(ul_width-this.w_width)*-1
+					left=(ul_width-this.w_width)*-2
 				}
-				// console.log(ul_width-this.w_width)
 				//设置ul属性
 				$(e.path[1]).css({
 					left:left+'px'
 				})
 			}
-			//手指放开
+			//添加手指放开事件
 			target[0].ontouchend=(e)=>{
-				// console.log(e)
 				e.path[1].ontouchmove='';
 				// 获取手指
 				t_e=e.changedTouches[0]
-				console.log(e)
-				let ul=$(e.path[1])
-				let w=Math.floor( parseInt(ul.css('left'))/this.w_width*-1)
-				this.index--
+				//计算到第几张
+				let w=Math.floor( parseInt(this.ul.css('left'))/this.w_width*-1)
 				if(this.p.x>t_e.pageX){
+					//如果手指放开的x位置大于按下时的位置则增加张
 					w++
-					this.index+=2
-					
-					console.log('gg',this.index)
 				}
-				//判断是否是最后一张
+				//获取总宽度
 				let ul_width=parseInt($(e.path[1]).css('width'))
 				// 总张数
 				let num=ul_width/this.w_width
-
-				//判断是否是追后一张
+				//判断是否是最后一张
 				if(w>num-1){
 					w--
 				}
-				if(this.index>num){
-					this.index=0
-				}
-				let left=w*this.w_width*-1
-
-				// this.animation(left,300)
-				$(e.path[1]).animate({left:left+'px'},300)
-				
-				// 清空按下时记录
-				this.p={}
-				this.fn_time()
+				this.index=w
+				this.play(this.index)
+				// let left=w*this.w_width*-1
+				// $(e.path[1]).animate({left:left+'px'},300)
+				this.p={}// 清空按下时记录
+				this.fn_time()//开启计时器
 			}
 		},
 		play(index){
-			// let w=praseInt(this.ul.css('width'))
 			let left=this.w_width*index*-1
-			// if(this.index>this.list.num.length){
-			// 	this.index=0
-			// }
+			/////判断是否到最后一张
+			let first=false  //判断是否到最后一张,默认为false
+			if(this.index>=this.list.num.length){
+				this.index=0
+				first=true; //动画播放完成后立刻切换
+			}
+			/////判断是否到-1
+			if(index<0){//如果小于0则播放最后一张
+				this.index=this.list.num.length-1
+			}
+			// 执行动画
 			this.ul.animate({left:left+'px'},300,()=>{
-				if(this.index>=this.list.num.length){
-					this.index=0
+				if(first){ //如果到最后一张则立刻切换
 					console.log('cfa')
-					// this.ul_l=-1
 					this.ul.css({left:'0px'})
 				}
-			})
-			if(index<0){
-				this.index=this.list.num.length
-			}
+			})	
 		},
 		fn_time(){
 			console.log(66)
