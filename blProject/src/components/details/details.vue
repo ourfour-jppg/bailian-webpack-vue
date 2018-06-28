@@ -17,8 +17,14 @@
 			xdetailsTop,
 			xdetailsContent,
 			xdetailsBottom
+		},
+		data(){
+			return{
+				showGoodsChoose:false
+			}
 		}
 	}
+	
 </script>
 
 <style scoped>
