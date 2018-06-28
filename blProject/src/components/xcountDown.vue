@@ -79,20 +79,21 @@
 
 <style scoped>
 	.countDown{
-		height: 58px;
+		height: 1.12rem;
 		background: #ff6f6f;
-		line-height: 22px;
+	/*	line-height: 48px;*/
 		color:#fff;
-		padding:0 16px;
+		padding:0 0.213333rem;
 	}
 	.countDown span:nth-child(1){
-		font-size: 20px;
+		font-size: 0.373333rem;
+		
 		/*font-weight: bold;*/
 	}
 	.countDown span:nth-child(2),.countDown span:nth-child(3){
-		font-size: 18px;
+		font-size: 0.373333rem;
 		float:right;
-		line-height: 58px;
+		line-height: 1.12rem;
 		
 	}
 	.countDown i{float:right;}

@@ -31,5 +31,6 @@
 	/*@import url("../../css/base.css");*/
 	#details{
 		background: #EDEDED;
+		line-height: 0.6;
 	}
 </style>

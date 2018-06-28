@@ -196,26 +196,14 @@
 
 <style scoped>
 	* {
-		font-size: 12px;
-		box-sizing: border-box;
-		padding: 0;
-		margin: 0;
-	}
-	
-	.fr {
-		float: right;
-	}
-	
-	.fl {
-		float: left;
+		font-size: 0.213333rem;
 	}
 	
 	#goodsCar {
-		padding-left: 20px;
+		padding-left: 0.266666rem;
 	}
-	
 	#top {
-		padding: 0 20px;
+		padding: 0 0.266666rem;
 		position: fixed;
 		top:0;
 		left:0;
@@ -224,36 +212,36 @@
 	}
 	
 	#top p {
-		height: 104px;
+		height: 1.386666rem;
 		text-align: center;
-		line-height: 75px;
-		font-size: 36px;
+		line-height: 1rem;
+		font-size: 0.48rem;
 		color: #2D2D2D;
 	}
 	.totalNum{
-		font-size: 36px;
+		font-size: 0.48rem;
 	}
 	.edit {
-		font-size: 36px;
+		font-size: 0.48rem;
 		color: #8E8E8E;
-		margin-right: 46px;
+		margin-right: 0.613333rem;
 	}
 	.main-top {
-		height: 100px;
+		height: 1.333333rem;
 		width: 100%;
 	}
 	#main{
-		margin-top:104px;
+		margin-top:1.386666rem;
 	}
 	.mr30 {
-		font-size: 28px;
+		font-size: 0.373333rem;
 		color: #262626;
-		margin-left: 30px;
+		margin-left: 0.4rem;
 	}
 	
 	img {
-		width: 200px;
-		height: 185px;
+		width: 2.666666rem;
+		height: 2.466666rem;
 	}
 	/*.check-span {
 		margin: 30px 6px 0 6px;
@@ -263,18 +251,18 @@
 	.check-span {
 		border-radius: 50%;
 		display: inline-block;
-		width: 30px;
-		height: 30px;
-		border: 1px solid #8E8E8E;
-		margin-top:86px;
-		margin-left: 4px;
+		width: 0.4rem;
+		height: 0.4rem;
+		border: 0.013333rem solid #8E8E8E;
+		margin-top:1.146666rem;
+		margin-left: 0.053333rem;
 		/*background: url("../../static/shopping_cart.fw.png") no-repeat -17px -197px;*/
 	}
 	
 	.icon-gou {
-		font-size: 34px;
+		font-size: 0.453333rem;
 		color:#FB6E67;
-		line-height:206px;
+		line-height:2.746666rem;
 		
 		/*background: url("../../static/shopping_cart.fw.png") no-repeat -34px -197px;*/
 	}
@@ -283,25 +271,25 @@
 		padding-left: 24px;
 	}*/
 	.content-right{
-		width: 650px;
-		margin-left:40px ;
-		border-bottom: 1px dotted #E2E2E2;
-		padding-bottom: 60px;
+		width: 8.666666rem;
+		margin-left:0.533333rem ;
+		border-bottom: 0.013333rem dotted #E2E2E2;
+		padding-bottom: 0.8rem;
 	}
 	.content {
-		padding-top: 32px;
+		padding-top: 0.426666rem;
 		
 	}
 	.content-right-right{
-		padding-left: 26px;
-		width: 448px;
+		padding-left: 0.346666rem;
+		width: 5.973333rem;
 	}
 	.content-right-right li{
 		overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display:block;
-		line-height: 38px;
+		line-height: 0.506666rem;
 	}
 	.fontSize26{
-		font-size: 26px;
+		font-size: 0.346666rem;
 		color:#323232;
 	}
 	.color1{
@@ -309,92 +297,92 @@
 	}
 	.price{
 		
-		font-size: 28px;
+		font-size: 0.373333rem;
 		color:#000000;
 	}
 	.lastLi{
-		margin-top: 75px;
+		margin-top: 1rem;
 	}
 	.lastLi p{
-		width: 210px;
-		height: 43px;
+		width: 2.8rem;
+		height: 0.573333rem;
 	}
 	.btn00{
 		display: inline-block;
-		width: 64px;
-		height: 43px;
-		border:1px solid #EAEAEA;
+		width: 0.853333rem;
+		height: 0.573333rem;
+		border:0.013333rem solid #EAEAEA;
 		text-align: center;
-		line-height: 43px;
+		line-height: 0.573333rem;
 	}
 	.chengeNumInput{
-		width:60px;
-		height:43px;
-		border-top:1px solid #EAEAEA;
-		border-bottom: 1px solid #EAEAEA;
+		width:0.8rem;
+		height:0.573333rem;
+		border-top:0.013333rem solid #EAEAEA;
+		border-bottom: 0.013333rem solid #EAEAEA;
 		text-align: center;
-		line-height: 43px;
+		line-height: 0.573333rem;
 	}
 	.payBar{
-		padding-left: 20px;
+		padding-left: 0.266666rem;
 		width: 100%;
 		position: fixed;
 		bottom: 0;
 		left: 0;
-		height: 102px;
+		height: 1.36rem;
 		background: #fff;
-		border-top: 1px solid #D2D2D0;
+		border-top: 0.013333rem solid #D2D2D0;
 	}
 	.total{
-		width: 282px;
-		height: 102px;
+		width: 3.76rem;
+		height: 1.36rem;
 		
 	}
 	.total .p1{
-		padding-top:20px;
+		padding-top:0.08rem;
 	}
 	.check{
-		width: 208px;
+		width: 2.773333rem;
 	}
 	.check span{
-		line-height: 102px;
+		line-height: 1.36rem;
 		color:#323232;
 	}
 	.totalP,.tP{
 		
-		font-size: 32px;
+		font-size: 0.426666rem;
 	}
 	.tP{
 		color:#F04040;
 	}
 	.p2 span{
-		font-size: 24px;
+		font-size: 0.32rem;
 		color:#A4A4A4;
 	}
 	.toPay a{
 		display: inline-block;
-		width: 240px;
+		width: 3.2rem;
 		background: #FE4A49;
-		line-height:102px ;
+		line-height:1.36rem ;
 		text-align: center;
 		color:#fff;
-		font-size: 36px;
+		font-size: 0.48rem;
 	}
 	.main-top .icon-gou{
-		line-height:46px;
+		line-height:0.613333rem;
 	}
 	.payBar .icon-gou{
 		color:#FB6E67;
 	}
 	.main-top .check-span{
-		margin-top:10px;
+		margin-top:0.133333rem;
 	}
 	.payBar .check-span{
-		margin-top:35px;
+		margin-top:0.466666rem;
 	}
 	.collect{
 		color:#FE4A49;
-		line-height: 68px;
-		font-size: 26px;
+		line-height: 0.906666rem;
+		font-size: 0.346666rem;
 	}
 </style>
