@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Mint from 'mint-ui';
+
 import Details from '@/components/details/details'
 import Login from '@/components/Login'
 import Reg from '@/components/Reg'
+import GoodsList from '../components/GoodsList'
+
 Vue.use(Router)
-Vue.use(Mint);
+
 
 export default new Router({
   routes: [
@@ -22,6 +24,10 @@ export default new Router({
       path:'/reg',
       name:'Reg',
       component: Reg
+    },{
+      path:'/goodslist',
+      name:'GoodsList',
+      component: GoodsList
     }
   ]
 })

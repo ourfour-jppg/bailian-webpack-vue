@@ -17,13 +17,13 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">账号</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入账号">
+                        <input class="weui-input" type="text" id="new-login-username" placeholder="请输入账号">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入密码">
+                        <input class="weui-input" type="text" id="new-login-username" placeholder="请输入密码">
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入账号">
+                        <input class="weui-input" type="text" placeholder="请输入账号">
                     </div>
                 </div>
                 <div class="weui-cell weui-cell_vcode">
@@ -72,6 +72,7 @@
     </div> 
 </template>
 <script>
+import $ from 'jquery'
 export default {
   data () {
     return {
@@ -93,7 +94,7 @@ export default {
   }
 
 </script>
-<style>
+<style scoped>
     #new-login{
         display: flex;
         height: 100%;
@@ -195,6 +196,8 @@ export default {
         background: #dad7d2;
         color: #fff;
         border-radius: 10px;
+        background: #e6133c;
+        color:#fff;
     }
     /* 手机获取验证码 */
     .weui-cell__ft{
