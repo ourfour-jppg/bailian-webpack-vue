@@ -1,5 +1,5 @@
 <template>
-	<div style="background: #EEEEEE;position: relative; " >
+	<div style="background: #EEEEEE;position: relative;" >
 		<div style=' overflow-x: hidden;width:100%;' v-if='!address.show'>
 			<ul>
 				<i style="display: block;height: 1px"></i>
@@ -30,6 +30,7 @@
 	import address1 from './address_1.vue';
 	export default{
 		data(){
+			
 			let data={
 				li:{
 					Default:1,

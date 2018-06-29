@@ -17,13 +17,20 @@
 			xdetailsTop,
 			xdetailsContent,
 			xdetailsBottom
+		},
+		data(){
+			return{
+				showGoodsChoose:false
+			}
 		}
 	}
+	
 </script>
 
 <style scoped>
 	/*@import url("../../css/base.css");*/
 	#details{
 		background: #EDEDED;
+		line-height: 0.6;
 	}
 </style>

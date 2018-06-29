@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+const webpack = require('webpack')
+>>>>>>> 36e0a74d843968c3f6dab899bc350bd8747b53b3
 'use strict'
 const path = require('path')
 const utils = require('./utils')
@@ -31,6 +35,16 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+<<<<<<< HEAD
+=======
+  plugins:[
+    new webpack.ProvidePlugin({
+      $:"jquery",
+      jQuery:"jquery",
+      "windows.jQuery":"jquery"
+    })
+  ],
+>>>>>>> 36e0a74d843968c3f6dab899bc350bd8747b53b3
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
