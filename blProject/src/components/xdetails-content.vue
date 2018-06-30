@@ -36,12 +36,6 @@
 </template>
 
 <script>
-	$(function(){
-		var imgBox = document.querySelector(".imgBox");
-		var imgBoxUl = document.querySelector(".imgBoxUl");
-	
-	})
-	
 	import xswiper from './xswiper'
 	import xcountDown from './xcountDown'
 	import xaddress from './xaddress'

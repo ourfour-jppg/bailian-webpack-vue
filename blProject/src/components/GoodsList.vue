@@ -5,7 +5,7 @@
         <div class="new-goodslist-box">
             <ul>
                 <li v-for="g in goodsData">
-                    <div class="goods-items clearfix">
+                    <div class="goods-items clearfix" :data-guid="g.id">
                         <div class="goods-img fl">
                             <img :src="'http://47.106.213.218:1802/'+g.img[0]">
                         </div>
@@ -19,7 +19,7 @@
                                     <div class="goods-comment">
                                         <span>999+</span><span>100%</span>
                                     </div>  
-                                    <a href="#" class="fr">0</a>
+                                    <a href="#/details" class="fr" @click=setId(g.id)>0</a>
                                 </div> 
                             </div>   
                         </div>
@@ -31,19 +31,18 @@
 </template>
 <script>
 import $ from 'jquery'
+//引入vuex仓库
+import {mapActions} from 'vuex'
 export default {
-    data(){
-        return {
-            goodsData:''
-        }
-    },mounted(){
-        this.$nextTick(()=>{
+    methods:{
+        // ajax请求数据方法
+        nextTick(name){
             var self = this;
             $.ajax({
                 type:"POST",
                 url:"http://47.106.213.218:1802/api/quire",
                 data:{
-                    inquire:"女装",
+                    inquire:name,
                     start:0,
                     num:20,
                     type:''
@@ -51,9 +50,33 @@ export default {
                 success:function(data){
                     self.goodsData = data.data;
                     console.log(self.goodsData)
+                    if(!self.goodsData){
+
+                    }
                 }
             })
+        },
+        // 
+        ...mapActions({
+            // 点击触发获取id方法
+            setId: 'setId' 
         })
+    },
+    // 获取location数据方法
+    data(){
+        let link = location.hash.split('?');
+        if(link.length){
+            link=decodeURI(link[1].split('=')[1])
+            this.nextTick(link)
+        }else{
+            link=''
+            console.log('没有传入参数')
+        }
+        console.log(link)
+
+        return {
+            goodsData:[]
+        }
     }
 }
 </script>

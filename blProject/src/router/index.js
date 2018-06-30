@@ -14,11 +14,14 @@ Vue.use(Router)
 // import home from '@/components/home/home'
 
 
-// import Details from '@/components/details/details'
+import Details from '@/components/details/details'
 import GoodsCar from '@/components/goodsCar'
 import address from '@/components/address.vue'
 
 import myCollection from '@/components/myCollection.vue'
+
+import fen from '@/components/fen.vue'
+
 
 Vue.use(Router)
 
@@ -31,11 +34,11 @@ export default new Router({
     //   component:home
     // },
     
-    // {
-    //   path: '/details',
-    //   name: 'Details',
-    //   component: Details
-		// },
+    {
+      path: '/details',
+      name: 'Details',
+      component: Details
+		},
     {
       path:'/login',
       name:'login',
@@ -68,6 +71,10 @@ export default new Router({
       path:'/me',
       name:'Me',
       component: Me
+    },{
+      path:'/fen',
+      name:'Fen',
+      component: fen
     }
   ]
 })
