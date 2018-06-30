@@ -19,8 +19,13 @@
 			xdetailsBottom
 		},
 		data(){
+//			$.post('http://47.106.213.218:1802/api/goods',{id:79454},(res)=>{
+//				this.$root.res = res;
+//				console.log(this.$root.res)
+//				console.log(this)
+//			})
 			return{
-				showGoodsChoose:false
+				
 			}
 		}
 	}
@@ -31,6 +36,6 @@
 	/*@import url("../../css/base.css");*/
 	#details{
 		background: #EDEDED;
-		line-height: 0.6;
+		/*line-height: 0.6;*/
 	}
 </style>

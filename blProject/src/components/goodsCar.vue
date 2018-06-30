@@ -47,10 +47,12 @@
 				</div>
 			</div>
 		</div>
+		<xfooter />
 	</div>
 </template>
 
 <script>
+	import xfooter from './ifooter'
 	export default {
 		name: 'xcarContent',
 		data() {
@@ -190,7 +192,8 @@
 			this.goodsData.map(function(item) {
 				_this.$set(item, 'select', true);
 			})
-		}
+		},
+		components:{xfooter}
 	}
 </script>
 
@@ -232,6 +235,7 @@
 	}
 	#main{
 		margin-top:1.386666rem;
+		margin-bottom: 2.693333rem;
 	}
 	.mr30 {
 		font-size: 0.373333rem;
@@ -327,7 +331,7 @@
 		padding-left: 0.266666rem;
 		width: 100%;
 		position: fixed;
-		bottom: 0;
+		bottom: 1.333333rem;
 		left: 0;
 		height: 1.36rem;
 		background: #fff;
@@ -382,7 +386,7 @@
 	}
 	.collect{
 		color:#FE4A49;
-		line-height: 0.906666rem;
+		line-height: 1.2rem;
 		font-size: 0.346666rem;
 	}
 </style>

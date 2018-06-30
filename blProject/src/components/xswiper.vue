@@ -2,12 +2,20 @@
 	<div>
 		<swiper :options="swiperOption" ref="mySwiper">
 			<!-- 这部分放你要渲染的那些内容 -->
-			<swiper-slide v-for="item in goodsData.images">
+			<swiper-slide v-for="(item,index) in goodsData.images">
 				<img :src="item.src" alt="" />
+				<div class="van-swipe__indicators">
+				<i class="van-swipe__indicator" v-for="(item,index) in goodsData.images" ></i>
+				</div>
 			</swiper-slide>
 			<!-- 这是轮播的小圆点 -->
-			<div class="swiper-pagination" slot="pagination"></div>
-			
+			<!--<div class="swiper-pagination" slot="pagination"></div>-->
+			<!--<div class="van-swipe__indicators">
+				<i class="van-swipe__indicator" v-for="item in goodsData.images"></i>
+				<i class="van-swipe__indicator van-swipe__indicator--active"></i>
+				<i class="van-swipe__indicator"></i>
+				<i class="van-swipe__indicator"></i>
+			</div>-->
 			<!--<div class="van-swipe__indicators"><i class="van-swipe__indicator" v-for="(item,index) in goodsData.images"></i></div>-->
 		</swiper>
 	</div>
@@ -77,4 +85,17 @@
 	img {
 		width: 100%;
 	}
+	.van-swipe__indicator{
+		width: 0.186666rem;
+		height: 0.186666rem;
+	}
+	.van-swipe__indicator:not(:last-child) {
+    	margin-right: 0.226666rem;
+    }
+    .van-swipe__indicators{
+    	margin-bottom: 0.426666rem;
+    }
+    .countDown .icon-xiangyou{
+    	font-size:0.533333rem;
+    }
 </style>

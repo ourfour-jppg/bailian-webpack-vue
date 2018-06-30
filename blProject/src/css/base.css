@@ -1,34 +1,19 @@
-<<<<<<< HEAD
+
 /*重置样式表*/
 /*==========样式重置===========*/
-body,h1,h2,h3,h4,p,a,input,img,ul,li,ol,dl,dt,dd{
-    padding:0;
-    margin:0;}
-ul,ol{
-    list-style:none;}
-img{
-    display:block;
-    border:0;}
+body,h1,h2,h3,h4,p,a,input,img,ul,li,ol,dl,dt,dd{padding:0;margin:0;}
+img{display:block;border:0;}
 fieldset, img,input,button { border:0 none; padding:0;margin:0;outline-style:none; }
 header,footer,section,main,nav{
     display:block;}
-body{
-    font-size:0.213333rem ;
-    font-family:"微软雅黑";
-    color:#3e3e3e;
-}
-a{
-    text-decoration:none;
-    color:#0dc441;}
+body{font-size:0.213333rem ;font-family:"微软雅黑";color:#3e3e3e;}
+a{text-decoration:none;color:#0dc441;}
 /*a:hover{
     text-decoration:underline;}*/
 i{font-style:normal;}
-*{box-sizing:border-box;}
 .clearfix::after{content:"";display:block;height: 0;overflow: hidden;visibility: hidden;
 clear:both;zoom:1;}
-=======
-*{margin: 0;padding: 0;box-sizing: border-box;}
-fieldset, img,input,button { border:0 none; padding:0;margin:0;outline-style:none; }  
+*{margin: 0;padding: 0;box-sizing: border-box;} 
 ul,li,ol{ list-style:none; }
 select, input { vertical-align:middle;}
 textarea { resize:none; } 
@@ -71,4 +56,3 @@ s,i,em{font-style:normal;text-decoration:none;}
 .f16{ font-size: 16px;}
 .f18{ font-size: 18px;}
 body{font-family: "PingFangSC-Regular",Helvetica,sans-serif;}
->>>>>>> 68a3ae7981b4b0ea9cd350b9e43dd469be362006

@@ -3,13 +3,13 @@
 		<div class="bottom">
 			<ul>
 				<li><a href="#"><i class="iconfont icon-tubiaolunkuo-"></i><span>客服</span></a></li>
-				<li><a href="#/goodsCar"><i class="iconfont icon-03"></i><span>购物车</span></a></li>
+				<li><a href="#/goodsCar"><i class="iconfont icon-03"></i><span>购物车</span><span></span></a></li>
 				<li><a @click="toggleCollect"><i class="iconfont icon-guanzhu" :class="{'background':collectState}"></i><span>已关注</span></a></li>
 				<li class="addToCar" @click="chooseGoods">加入购物车</li>
 				<li class="toPay" @click="chooseGoods">立即购买</li>
 			</ul>
 		</div>
-		<xaddToCar v-if="isChooseGoods" />
+		<xaddToCar v-if="$store.state.isChooseGoods"/>
 	</div>
 
 </template>
@@ -19,16 +19,18 @@
 	export default {
 		data(){
 			return {
-				collectState:false
+				collectState:false,
 			}
 		},
 		methods: {
 			chooseGoods: function() {
+				console.log(this)
 				this.$store.state.isChooseGoods = true;
 			},
 			toggleCollect:function(){
-				this.collectState = !this.collectState
-			}
+				this.collectState = !this.collectState;
+			},
+			
 			
 		},
 		components: {

@@ -2,7 +2,7 @@
 	<div class="countDown">
 		<span>闪购</span>
 		<span class="icon-xiangyou iconfont"></span>
-		<span :endTime="endTime" :callback="callback" :endText="endText" >
+		<span :endTime="endTime" :endText="endText" >
 			剩余时间：
 		    <slot>
 		      {{content}}
@@ -27,10 +27,10 @@
 				type: String,
 				default: '已结束'
 			},
-			callback: {
-				type: Function,
-				default: ''
-			}
+//			callback0: {
+//				type: Function,
+//				default: ''
+//			}
 		},
 		mounted() {
 			this.countdowm(this.endTime)
@@ -68,11 +68,11 @@
 					}
 				}, 1000);
 			},
-			_callback() {
-				if(this.callback && this.callback instanceof Function) {
-					this.callback(...this);
-				}
-			}
+//			_callback() {
+//				if(this.callback0 && this.callback0 instanceof Function) {
+////					this.callback0(...this);
+//				}
+//			}
 		}
 	}
 </script>
@@ -87,7 +87,7 @@
 	}
 	.countDown span:nth-child(1){
 		font-size: 0.373333rem;
-		
+		line-height: 1.12rem;
 		/*font-weight: bold;*/
 	}
 	.countDown span:nth-child(2),.countDown span:nth-child(3){

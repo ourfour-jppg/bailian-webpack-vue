@@ -8,7 +8,8 @@ export default new Vuex.Store({
 	// 状态 组件需要表达态度
 	// 公共的数据层
 	state: {
-		isChooseGoods: false
+		isChooseGoods: false,
+		addSuccess:false
 	},
 	mutations: {
 		increment(state) {

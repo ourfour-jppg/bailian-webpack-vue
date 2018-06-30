@@ -14,16 +14,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "jquery": "^3.3.1",
-=======
-<<<<<<< HEAD
     "ly-tab": "^1.0.3",
     "vant": "^1.1.9",
-=======
->>>>>>> e541395a3731b94dc81502c812ceefade91c81e7
     "mint-ui": "^2.2.13",
->>>>>>> 68a3ae7981b4b0ea9cd350b9e43dd469be362006
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.1.3",
     "vue-countdown": "^1.0.4",
