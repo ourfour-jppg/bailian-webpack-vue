@@ -1,32 +1,13 @@
 <template>
     <main>
+            <banner />
             <div class="title">今天爆款<i class="iconfont icon-xiangyou"></i></div>
             <div class="titleImg swiper-container">
-                <ul class="titles swiper-wrapper">
-                    <li  class="swiper-slide">
-                        <img src="http://Img35.iblimg.com/goods-29/1000/2016/11/SP_1000_100031938034_01_10006.jpg"/>
-                        <p class="p1">￥<span>14.9</span></p>
-                        <p class="p2">参考价：￥19.8</p>
-                    </li>
-                    <li  class="swiper-slide">
-                        <img src="http://Img35.iblimg.com/goods-29/1000/2016/11/SP_1000_100031938034_01_10006.jpg"/>
-                        <p class="p1">￥<span>14.9</span></p>
-                        <p class="p2">参考价：￥19.8</p>
-                    </li>
-                    <li  class="swiper-slide">
-                        <img src="http://Img35.iblimg.com/goods-29/1000/2016/11/SP_1000_100031938034_01_10006.jpg"/>
-                        <p class="p1">￥<span>14.9</span></p>
-                        <p class="p2">参考价：￥19.8</p>
-                    </li>
-                    <li  class="swiper-slide">
-                        <img src="http://Img35.iblimg.com/goods-29/1000/2016/11/SP_1000_100031938034_01_10006.jpg"/>
-                        <p class="p1">￥<span>14.9</span></p>
-                        <p class="p2">参考价：￥19.8</p>
-                    </li>
-                    <li  class="swiper-slide">
-                        <img src="http://Img35.iblimg.com/goods-29/1000/2016/11/SP_1000_100031938034_01_10006.jpg"/>
-                        <p class="p1">￥<span>14.9</span></p>
-                        <p class="p2">参考价：￥19.8</p>
+                <ul class="titles swiper-wrapper" style="width:3000px;">
+                    <li  class="swiper-slide" v-for="item in igoods">
+                        <img :src="'http://47.106.213.218:1802/'+item.img"/>
+                        <p class="p1">￥<span>{{item.price}}</span></p>
+                        <p class="p2">参考价：￥{{item.reference}}</p>
                     </li>
                 </ul>
             </div>
@@ -45,94 +26,53 @@
             </div>
             <div class="recommend">
                 <div class="h3">相见恨晚·好物推荐</div>
-                <div class="rebanner"></div>
+                <banner />
                 <ul class="newlist">
-                    <li>
+                    <li v-for="it in news">
                         <div class="newL">
-                            <img src="http://img27.iblimg.com/content-4/images/webup/593983142.png" alt="" />
+                            <img :src="'http://47.106.213.218:1802/'+it.img"/>
                         </div>
                         <div class="newR">
-                            <p class="newRt">暑假到了还不出去浪？带上旅行箱说走就走吧</p>
+                            <p class="newRt">{{it.title}}}</p>
                             <p class="newRb">
-                                相关产品<span>10</span>款，<span>6.7</span>万人感兴趣
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="newL">
-                            <img src="http://img27.iblimg.com/content-4/images/webup/451796932.png" alt="" />
-                        </div>
-                        <div class="newR">
-                            <p class="newRt">暑假到了还不出去浪？带上旅行箱说走就走吧</p>
-                            <p class="newRb">
-                                相关产品<span>10</span>款，<span>6.7</span>万人感兴趣
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="newL">
-                            <img src="http://img26.iblimg.com/content-4/images/webup/766126419.jpg" alt="" />
-                        </div>
-                        <div class="newR">
-                            <p class="newRt">暑假到了还不出去浪？带上旅行箱说走就走吧</p>
-                            <p class="newRb">
-                                相关产品<span>10</span>款，<span>6.7</span>万人感兴趣
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="newL">
-                            <img src="http://img26.iblimg.com/content-4/images/webup/1243012348.jpg" alt="" />
-                        </div>
-                        <div class="newR">
-                            <p class="newRt">暑假到了还不出去浪？带上旅行箱说走就走吧</p>
-                            <p class="newRb">
-                                相关产品<span>10</span>款，<span>6.7</span>万人感兴趣
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="newL">
-                            <img src="http://Img.iblimg.com/photo-42/1000/1384107314_360x360.JPG" alt="" />
-                        </div>
-                        <div class="newR">
-                            <p class="newRt">暑假到了还不出去浪？带上旅行箱说走就走吧</p>
-                            <p class="newRb">
-                                相关产品<span>10</span>款，<span>6.7</span>万人感兴趣
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="newL">
-                            <img src="http://Img.iblimg.com/photo-42/1000/591036121_360x360.jpg" alt="" />
-                        </div>
-                        <div class="newR">
-                            <p class="newRt">暑假到了还不出去浪？带上旅行箱说走就走吧</p>
-                            <p class="newRb">
-                                相关产品<span>10</span>款，<span>6.7</span>万人感兴趣
+                            正在火热促销价<span>{{it.price}}</span>，原价<del><span>{{it.reference}}</span></del>
                             </p>
                         </div>
                     </li>
                 </ul>
             </div>
             <iactivity />
+            <like />
             <div class="tian"></div>
         </main>
 </template>
 
 <script>
     import iactivity from './iactivity'
+    import banner from './banner'
+    import like from './like'
+
     export default {
         name: 'imain',
-        components: {iactivity}
+        data(){
+            $.get('http://47.106.213.218:1802/api/home',{
+                home:1
+            },(res)=>{
+                    this.igoods=res[0].promotion
+                    res[0].promotion.length = 7
+                    this.news = res[0].promotion
+                    console.log(this.new)
+                }
+            )
+            return {
+                igoods:[],
+                news:[]
+            }
+        },
+    components: {iactivity,banner,like}
     }
 
     $(function () {
-    var img = document.querySelector('.titleImg');
-    var ul = img.children[0];
-    var li = img.children[0].children[0];
-    var len = ul.children.length;
-    ul.style.width = li.clientWidth *len+(len*20+100) + 'px';
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 20,
             slidesPerView:'auto',
@@ -142,7 +82,7 @@
 </script>
     
 <style scoped>
-    main{
+main{
     margin-top: 1.266667rem;
 }
 main .title{

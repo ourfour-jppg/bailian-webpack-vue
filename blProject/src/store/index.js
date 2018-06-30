@@ -9,7 +9,8 @@ Vue.use(Vuex)
 let state = {
 	id:'',
 	// lfj的vuex数据
-	isChooseGoods: false
+	isChooseGoods: false,
+    isShowsheet:false
 };
 
 // 事件触发后的逻辑操作

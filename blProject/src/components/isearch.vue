@@ -13,7 +13,7 @@
             </div>
         </div>
         <div :class = "{'ds':ShowSearch}">
-            <input type="text" placeholder="搜索" />
+            <input type="text" placeholder="搜索" autofocus/>
             <i class="qux" @click="sear">取消</i>
         </div>
         </header>

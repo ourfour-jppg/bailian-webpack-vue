@@ -6,6 +6,8 @@ import Login from '@/components/Login'
 import Reg from '@/components/Reg'
 import GoodsList from '../components/GoodsList'
 import Me from '../components/Me'
+import home from '@/components/home/home'
+import indent from '@/components/indent/indent'
 
 Vue.use(Router)
 
@@ -75,6 +77,16 @@ export default new Router({
       path:'/fen',
       name:'Fen',
       component: fen
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component:home
+    },
+    {
+      path: '/indent',
+      name: 'indent',
+      component:indent
     }
   ]
 })

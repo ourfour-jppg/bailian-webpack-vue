@@ -1,14 +1,13 @@
 <template>
-		<div id='c'style='overflow: hidden;'>
-			<!-- <i v-text='add()'></i> -->
-			
-			<p v-text='title' class="bt"></p>
-			<a  v-for='obj in goods' :href='"#/detail?"+obj.id'>
-				<img :src='"http://47.106.213.218:1802/"+obj.img[0]' />
-				<p v-text='obj.title' class="fz"></p>
-				<p v-text='"￥"+obj.reference'></p>
-			</a>
-		</div>
+	<div >
+		<!-- <i v-text='add()'></i> -->
+		<p v-text='title' class="bt"></p>
+		<a  v-for='obj in goods' :href='"#/detail?"+obj.id'>
+			<img :src='"http://47.106.213.218:1802/"+obj.img[0]' />
+			<p v-text='obj.title' class="fz"></p>
+			<p v-text='"￥"+obj.reference'></p>
+		</a>
+	</div>
 </template>
 <script>
 // import bottom from './com/bottom.vue'
@@ -21,7 +20,6 @@ export default{
 			data:{},
 			index:5
 		}
-
 		$.get('http://47.106.213.218:1802/api/home',(res)=>{
 				console.log('$get')
 				// res=json.parse(res)
@@ -32,20 +30,7 @@ export default{
 				for(let i=0;i<6;i++){
 					data.goods.push(data.data[i])
 				}
-				const win=$(window)
-				const body=$('body')
-				win.scroll(()=>{
-					 
-					// const x=win.scrollTop()
-					let z=Math.round(body.height())
-
-					if(win.scrollTop()+window.innerHeight>z-z*0.1){
-						console.log('1')
-						this.add()
-					}
-					// console.log(win.scrollTop())
-					
-				})
+				
 
 			})
 		return data;
@@ -58,13 +43,14 @@ export default{
 	},
 	methods:{
 		add(){
-			this.index++
-			if(this.data.length>this.index){
-				console.log(this.data.length,this.index)
-				this.goods.push(this.data[this.index])
-			}else{
-				console.log('加载完成')
+			console.log('c')
+			if(this.data.length>index){
+				index++
+				this.goods.push(this.data(index))
+				index++
+				this.goods.push(this.data(index))	
 			}
+			
 		}
 	}
 }
@@ -91,8 +77,6 @@ export default{
 	}
 	.fz{
 		font-size: 0.333333rem;
-		display: block;
-		height: 0.8rem;
 		line-height: 0.4rem;
 		color: #7B7C78;
 		padding-bottom: 0.266667rem;
@@ -102,9 +86,5 @@ export default{
 		font-size: 0.466667rem;
 		text-align: center;
 		font-weight:bold;
-	}
-	em{
-		display: block;
-		height: 10px
 	}
 </style>

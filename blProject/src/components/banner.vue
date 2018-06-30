@@ -42,7 +42,6 @@ export default{
 			})
 			data.list.width=this.img_url.length*0.32 +'rem'//设置指示器总宽度
 			this.img_url.push(this.img_url[0])//复制第一张
-			console.log(this.img_url)
 		})
 		return data;
 	},
@@ -117,19 +116,15 @@ export default{
 			// 执行动画
 			this.ul.animate({left:left+'px'},300,()=>{
 				if(first){ //如果到最后一张则立刻切换
-					console.log('cfa')
 					this.ul.css({left:'0px'})
 				}
 			})	
 		},
 		fn_time(){
-			console.log(66)
 			this.time=setInterval(()=>{
-				console.log(this.index)
 				this.index++
 				this.play(this.index)
-				
-			},1000)
+			},3000)
 			
 		}
 	}
