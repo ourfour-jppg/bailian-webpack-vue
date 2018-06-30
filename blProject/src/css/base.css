@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*重置样式表*/
 /*==========样式重置===========*/
 body,h1,h2,h3,h4,p,a,input,img,ul,li,ol,dl,dt,dd{
@@ -26,7 +26,7 @@ i{font-style:normal;}
 *{box-sizing:border-box;}
 .clearfix::after{content:"";display:block;height: 0;overflow: hidden;visibility: hidden;
 clear:both;zoom:1;}
-=======
+
 *{margin: 0;padding: 0;box-sizing: border-box;}
 fieldset, img,input,button { border:0 none; padding:0;margin:0;outline-style:none; }  
 ul,li,ol{ list-style:none; }
@@ -71,4 +71,4 @@ s,i,em{font-style:normal;text-decoration:none;}
 .f16{ font-size: 16px;}
 .f18{ font-size: 18px;}
 body{font-family: "PingFangSC-Regular",Helvetica,sans-serif;}
->>>>>>> 68a3ae7981b4b0ea9cd350b9e43dd469be362006
+
