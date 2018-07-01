@@ -99,6 +99,7 @@
 .icon-back:before { content: "\e610"; }/*详情页：返回图标>*/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .icon-message:before { content: "\e618"; }/*详情页：头部消息>*/
 
 .icon-fenlei2:before { content: "\e61d"; }/*详情页：头部消息>*/
@@ -111,6 +112,8 @@
 .icon-tubiaolunkuo-:before { content: "\e60d"; }/*详情页：客服*/
 =======
 >>>>>>> 2d28f32cccda279da94b8e8cb2f01d62bd46b018
+=======
+>>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 
 .icon-xiangyou:before { content: "\e7ad"; }/*详情页：实心向右三角形*/
 
@@ -123,10 +126,13 @@
 
 .icon-gou:before { content: "\e613"; }/*购物车页面：勾选商品后的图标>*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 .icon-weixuanzhongyuanquan:before { content: "\f0129"; }
 =======
 >>>>>>> 2d28f32cccda279da94b8e8cb2f01d62bd46b018
+=======
+>>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 
 .icon-xiala:before { content: "\e822"; }/*下拉图标*/
 

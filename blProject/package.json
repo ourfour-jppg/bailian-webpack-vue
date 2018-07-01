@@ -17,8 +17,12 @@
     "jquery": "^3.3.1",
     "ly-tab": "^1.0.3",
     "mint-ui": "^2.2.13",
+<<<<<<< HEAD
     "swiper": "^4.3.3",
     "vant": "^1.1.10",
+=======
+    "vant": "^1.1.9",
+>>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.1.3",
     "vue-countdown": "^1.0.4",

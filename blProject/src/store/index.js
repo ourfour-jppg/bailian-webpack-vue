@@ -11,6 +11,7 @@ let state = {
 	// lfj的vuex数据
 	isChooseGoods: false,
 	addSuccess:false
+    isShowsheet:false
 };
 
 // 事件触发后的逻辑操作

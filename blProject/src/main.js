@@ -14,6 +14,7 @@ import VantCss from './css/vant.css'
 //import weui from 'weui'
 import $ from 'jquery'
 
+
 //状态
 import store from './store/index.js'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -23,6 +24,7 @@ Vue.use(VueAwesomeSwiper)
 import App from './App'
 
 import fonts from '../static/fonts/iconfont.css'
+
 
 Vue.config.productionTip = false
 

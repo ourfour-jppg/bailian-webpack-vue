@@ -8,7 +8,12 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 	
+=======
+	import { mapGetters } from 'vuex'
+	//引入vuex仓库
+>>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 	import xdetailsTop from '../xdetails-top'
 	import xdetailsContent from '../xdetails-content'
 	import xdetailsBottom from '../xdetails-bottom'
@@ -34,10 +39,19 @@
 				
 			}
 		},
+<<<<<<< HEAD
 		
 		computed:{
 			
 			
+=======
+		// 获取id方法
+		methods: {
+			...mapGetters([
+				// 在store.js 中注册的getters
+				'getId'
+			])
+>>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 		}
 	}
 	

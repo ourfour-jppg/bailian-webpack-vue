@@ -95,9 +95,12 @@ export default {
 
 </script>
 <style scoped>
+<<<<<<< HEAD
     i{
         font-size: .533333rem;
     }
+=======
+>>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
     #new-login{
         display: flex;
         height: 100%;
