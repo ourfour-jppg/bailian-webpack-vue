@@ -1,9 +1,9 @@
 <template>
-	<div id="goodsCar" v-if='goodsData.length>0'>
-		<div id="top">
+	<div id="goodsCar">
+		<div id="top" :class="{borderBottom:goodsData.length>0?false:true}">
 			<p>购物车（<span class="totalNum">{{goodsData.length}}</span>）<span class="fr edit" @click="toggleEdit" v-model="status">{{status}}</span></p>
 		</div>
-		<div id="main">
+		<div id="main" v-if='goodsData.length>0'>
 			<div class="main-top">
 				<span class="check-all mr0 fl iconfont" :class="{'icon-gou':isSelectAll,'check-span':!isSelectAll}" @click="selectProduct(isSelectAll)"></span><span class="mr30 fl">i百联自营</span>
 			</div>
@@ -47,6 +47,13 @@
 				</div>
 			</div>
 		</div>
+		<div v-else class="emptyCar">
+			<div class="emptyIcon"></div>
+			<div style="text-align: center;">
+				<p class="remainder">购物车是空的</p>
+				<a href="#/home" class="toHome">去逛逛</a>
+			</div>
+		</div>
 		<xfooter />
 	</div>
 </template>
@@ -68,12 +75,22 @@
 				})
 				console.log(res)
 			});
+			
 			return {
 				status: '编辑',
 				goodsData: []
 			}
 		},
 		methods: {
+			deleteCarGoods(){
+				$.post('http://47.106.213.218:1802/api/shoppingcart', {
+						way: 'set',
+						id: '5b36ed70413bd207bc01d15c',
+						data: JSON.stringify(this.goodsData)
+					}, (res) => {
+						console.log('删除选中的商品后的数据库》》',JSON.parse(res))
+					});
+			},
 			toggleEdit() {
 				if(this.status == '编辑') {
 					this.status = '完成';
@@ -102,17 +119,21 @@
 				this.goodsData = this.goodsData.filter(function(item) {
 					//返回select=false的数据
 					return !item.select
-				})
+				});
+				this.$options.methods.deleteCarGoods.bind(this)();
 			},
 			//删除单条产品
 			deleteOneProduct: function(index) {
 				//根据索引删除productList的记录
 				this.goodsData.splice(index, 1);
+				this.$options.methods.deleteCarGoods.bind(this)();
 			},
 			//清空购物车
 			deleteAll: function() {
 				this.goodsData = [];
-			}
+				this.$options.methods.deleteCarGoods.bind(this)();
+			},
+			
 		},
 		computed: {
 			//检测是否全选
@@ -127,7 +148,8 @@
 				//获取goodsData中select为true的数据。
 				var _proList = this.goodsData.filter(function(val) {
 						return val.select
-					}),
+					});
+				this.$root.payGoods = _proList;//结算时候的商品，用于结算页面
 					totalPrice = 0;
 				var totalrPrice = 0;
 				for(var i = 0, len = _proList.length; i < len; i++) {
@@ -160,7 +182,34 @@
 	#goodsCar {
 		padding-left: 0.266666rem;
 	}
-	
+	.emptyCar{
+		margin-top:1.386666rem;
+		padding:3.573333rem 36% 0 36%;
+		
+	}
+	.emptyIcon{
+		height: 2.986666rem;
+		background: url(../../static/emptyCarIcon.png);
+	}
+	.remainder{
+		text-align: center;
+		font-size: 0.346666rem;
+		line-height: 1.28rem;
+		color:#8D8D8D;
+	}
+	.toHome{
+		display: inline-block;
+		width: 1.973333rem;
+		height: 0.8rem;
+		font-size: 0.346666rem;
+		color:#C8C8C8;
+		border:1px solid #8D8D8D;
+		line-height:0.8rem;
+		text-align: center;
+	}
+	.borderBottom{
+		border-bottom: 1px solid #8E8E8E;
+	}
 	#top {
 		padding: 0 0.266666rem;
 		position: fixed;

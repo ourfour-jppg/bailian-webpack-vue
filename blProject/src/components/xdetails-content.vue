@@ -55,14 +55,11 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 	import { mapGetters } from 'vuex'
 	//引入vuex仓库
 	import '../lib/swiper.min.js'
 	import { swiper, swiperSlide } from 'vue-awesome-swiper'
-=======
 	import xswiper from './xswiper'
->>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 	import xcountDown from './xcountDown'
 	import xaddToCar from './xaddToCar'
 	import xaddress from './Area'

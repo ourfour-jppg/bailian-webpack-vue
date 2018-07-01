@@ -3,7 +3,6 @@
         <div class="new-me-title clearfix">
             <a href="#"><i class="iconfont icon-shezhi"></i></a><a href="#"><i class="iconfont icon-xiaoxi"></i></a>
         </div>
-<<<<<<< HEAD
         <div class="new-me-user clearfix">
             <div class="new-me-img fl">
                 <i class="iconfont icon-wode new-me-logo"></i>
@@ -123,10 +122,6 @@
                     </li>
                 </ul>
             </div>
-=======
-        <div class="new-me-user">
-            <div class="new-me-img">123</div>
->>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
         </div>
     </div>
 </template>
@@ -137,26 +132,15 @@ export default {
 </script>
 <style>
 #new-me{
-<<<<<<< HEAD
     display: flex;
-=======
-    /* display: flex; */
->>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
     height: 100%;
     width: 100%;
     overflow: hidden;
     background: #E13A44;
-<<<<<<< HEAD
     flex-direction: column;
 }
 #new-me i{
     font-size: .586667rem;
-=======
-}
-#new-me i{
-    font-size: .586667rem;
-    color: #fff;
->>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 }
 .new-me-title{
     padding: .266667rem .4rem;
@@ -165,7 +149,6 @@ export default {
     display: block;
     margin-left: .533333rem;
     float: right;
-<<<<<<< HEAD
     color: #fff;
 }
 .new-me-user{
@@ -289,13 +272,4 @@ export default {
 .icon-pr{
     margin-right: .266667rem;
 }
-=======
-}
-.new-me-img{
-    width: 1.813333rem;
-    height: 1.813333rem;
-    border-radius: 50%;
-    background: #fff;
-}
->>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 </style>

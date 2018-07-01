@@ -10,7 +10,7 @@ let state = {
 	id:'',
 	// lfj的vuex数据
 	isChooseGoods: false,
-	addSuccess:false
+	addSuccess:false,
     isShowsheet:false
 };
 

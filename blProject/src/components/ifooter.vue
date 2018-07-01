@@ -1,7 +1,6 @@
 <template>
     <footer>
             <div class="ul">
-<<<<<<< HEAD
                 <a class="iconfont icon-shouye" href="#/home">
                     <p>首页</p>
                 </a>
@@ -11,8 +10,7 @@
                 <a class="iconfont icon-gouwuche" href="#/goodsCar">
                     <p>购物车</p>
                 </a>
-                <a class="iconfont icon-wode" href="#/reg">
-=======
+                <a class="iconfont icon-wode" href="#/reg"></a>
                 <a class="iconfont icon-shouye">
                     <p>首页</p>
                 </a>
@@ -23,7 +21,6 @@
                     <p>购物车</p>
                 </a>
                 <a class="iconfont icon-wode">
->>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
                     <p>我的</p>
                 </a>
             </div>
@@ -47,20 +44,17 @@ footer{
     bottom:0;
     left:0;
     right:0;
-<<<<<<< HEAD
     line-height: 1.2;
 }
 footer{
     width: 100%;
 }
 footer a{display:block;float:left;width:2.493333rem;height:1.333333rem;text-align: center;padding-top:0.066667rem;}
-=======
-}
+
 footer{
     width: 100%;
 }
 footer a{display:block;float:left;width:2.493333rem;height:1.333333rem;text-align: center;padding-top:0.066667rem;line-height:1.2;}
->>>>>>> 52b654110ded9053646de2e38360a7256c7d0cda
 footer a:hover .iconfont{color:#111;}
 footer a:hover p{color:#111;}
 footer .iconfont{font-size:0.666667rem;color:#333;}
