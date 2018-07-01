@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/components/home/home'
-//import Mint from 'mint-ui';
 import Details from '@/components/details/details'
 import Login from '@/components/Login'
+import Reg from '@/components/Reg'
+import GoodsList from '../components/GoodsList'
+import Me from '../components/Me'
+
+   import home from '@/components/home/home'
+
 import GoodsCar from '@/components/goodsCar'
 import address from '@/components/address.vue'
 import myCollection from '@/components/myCollection.vue'
-import Reg from '@/components/Reg.vue'
 import classification from '@/components/classification/classification'
+
+import fen from '@/components/fen.vue'
+
 Vue.use(Router)
+
 export default new Router({
   routes: [
     {
@@ -17,7 +24,7 @@ export default new Router({
       name: 'home',
       component:home
     },
-   {
+    {
       path: '/details',
       name: 'Details',
       component: Details
@@ -36,6 +43,12 @@ export default new Router({
       name:'Reg',
       component: Reg
     },{
+
+      path:'/goodslist',
+      name:'GoodsList',
+      component: GoodsList
+    },
+    {
       path:'/address',
       name:'address',
       component: address
@@ -47,6 +60,16 @@ export default new Router({
     	path:'/classification',
       name:'classification',
       component: classification
+    },
+		{
+      path:'/me',
+      name:'Me',
+      component: Me
+    },
+    {
+      path:'/fen',
+      name:'Fen',
+      component: fen
     }
   ]
 })

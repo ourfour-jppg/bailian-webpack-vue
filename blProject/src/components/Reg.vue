@@ -2,8 +2,8 @@
     <div id="new-reg">
         <div class="new-reg-title">
             <ul>
-                <li @click="isLeave">&lt;</li>
-                <li><img :src="logo"><span>注册</span></li>
+                <li @click="isLeave"><i class="iconfont icon-back"></i></li>
+                <li class="clearfix"><img :src="logo" class="fl" style="margin-top:10px;"><span class="fl">注册</span></li>
                 <li></li>
             </ul>
         </div>
@@ -11,7 +11,7 @@
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入手机号">
+                    <input class="weui-input" type="number" id="new-reg-phoneNum" @input="isPhoneNum()" placeholder="请输入手机号">
                 </div>
             </div>
             <div class="weui-cell weui-cell_vcode">
@@ -19,9 +19,9 @@
                     <label class="weui-label">图形码</label>
                 </div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="tel" placeholder="请输右侧图形码">
+                    <input class="weui-input" type="text" id="new-reg-code" @input="isCode()" placeholder="请输右侧图形码">
                 </div>
-                <div class="new-reg-code" ><p v-text="newCode"></p></div>
+                <div class="new-reg-code" ><p @click="newCode()" v-text="code"></p></div>
             </div>
             <div class="weui-cell weui-cell_vcode">
                 <div class="weui-cell__hd">
@@ -31,13 +31,13 @@
                     <input class="weui-input" type="tel" placeholder="请输短信验证码">
                 </div>
                 <div class="weui-cell__ft">
-                    <button class="weui-vcode-btn">获取验证码</button>
+                    获取验证码
                 </div>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">设置密码</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="8-20位字母、数字组合">
+                    <input class="weui-input" type="password" id="new-reg-PassWord" @input="isPassWord()" placeholder="8-20位字母、数字组合">
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
             注册即视为你阅读并同意<a href="#">《百联用户协议》</a>
         </div>
         <div class="new-reg-btn">
-            <div class="new-reg-btn"><a href="javascript:;" class="weui-btn">登录</a></div>
+            <div class="new-reg-btn"><a href="javascript:;" class="weui-btn" :class="{isReg:hasPhoneNum&&hasCode&&hasPassWord}">注册</a></div>
         </div>
         <a href="#/login" class="new-reg-tologin">已有百联通账户，直接登录</a>
         <div class="new-reg-alert" v-show="bool">
@@ -55,15 +55,16 @@
     </div>
 </template>
 <script>
+import $ from "jquery"
 export default {
     data () {
     return {
       logo:'../static/bl-logo.png',
-      bool:false
-    }
-  },
-  computed:{
-      newCode(){
+      bool:false,
+      hasPhoneNum:false,
+      hasCode:false,
+      hasPassWord:false,
+      code:(function(){
           let code = '';
           let codeStr = '1234567890'
           for(let i=0;i<4;i++){
@@ -71,17 +72,63 @@ export default {
               code += codeStr[idx];
           }
 
-          return code
-      }
+          return code 
+      })()
+    }
   },
   methods:{
+      newCode(){
+          console.log(123);
+          let code = '';
+          let codeStr = '1234567890'
+          for(let i=0;i<4;i++){
+              let idx = parseInt(Math.random()*10);
+              code += codeStr[idx];
+          }
+
+          this.code = code
+      },
       isLeave(){
           this.bool = !this.bool
+      },
+      isPhoneNum(){
+          let phoneNum = $('#new-reg-phoneNum').val();
+
+          if(/^^1[3456789]\d{9}$/.test(phoneNum)){
+            this.hasPhoneNum = true
+            console.log(this.hasPhoneNum)
+          }
+          else{
+              this.hasPhoneNum = false
+          }
+      },
+      isCode(){
+          let code = $('#new-reg-code').val();
+          if( code === this.code){
+            this.hasCode = true
+            console.log(this.hasCode);
+          }
+          else{
+            this.hasCode = false
+          }
+      },
+      isPassWord(){
+        let password = $('#new-reg-PassWord').val();
+        if(/\w{8,20}/ig.test(password)){
+            this.hasPassWord = true
+            console.log(this.hasPassWord);
+        }
+        else{
+            this.hasPassWord = false
+        }
       }
   }
 }
 </script>
-<style>
+<style scoped>
+    i{
+        font-size: .533333rem;
+    }
     #new-reg{
         display: flex;
         height: 100%;
@@ -89,6 +136,7 @@ export default {
         font-size: .4rem;
         background:rgb(238, 238, 238);
         position:relative;
+        overflow: hidden;
     }
     .new-reg-title{
         /* height: 1.2rem; */
@@ -122,6 +170,11 @@ export default {
     .weui-cell{
         font-size: .373333rem;
         background: #fff;
+        height: 1.066667rem;
+    }
+    .weui-vcode-btn{
+        height: 1.066667rem;
+        line-height: 1.066667rem;;
     }
     .weui-label{
         width: 100%;
@@ -131,12 +184,8 @@ export default {
         width: 3.666667rem;
         background: #e6133c;
         height: 1.066667rem;
-    }
-    .weui-vcode-btn{
-        width: 100%;
-        border:0 none;
-        height: 1.2rem;
-        font-size: .373333rem;
+        text-align: center;
+        line-height: 1.066667rem;
         color:#fff;
     }
     .weui-cell:nth-child(4){
@@ -144,6 +193,10 @@ export default {
     }
     .new-reg-btn{
         padding: 0 .266667rem;
+    }
+    .new-reg-btn .isReg{
+        background: #e6133c;
+        color:#fff;
     }
     .weui-btn{
         height: 1.2rem;

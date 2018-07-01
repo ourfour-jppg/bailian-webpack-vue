@@ -10,7 +10,7 @@
                 <a class="iconfont icon-gouwuche" href="#/goodsCar">
                     <p>购物车</p>
                 </a>
-                <a class="iconfont icon-wode">
+                <a class="iconfont icon-wode" href="#/reg">
                     <p>我的</p>
                 </a>
             </div>

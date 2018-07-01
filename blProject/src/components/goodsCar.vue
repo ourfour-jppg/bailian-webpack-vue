@@ -1,5 +1,5 @@
 <template>
-	<div id="goodsCar">
+	<div id="goodsCar" v-if='goodsData.length>0'>
 		<div id="top">
 			<p>购物车（<span class="totalNum">{{goodsData.length}}</span>）<span class="fr edit" @click="toggleEdit" v-model="status">{{status}}</span></p>
 		</div>
@@ -13,12 +13,12 @@
 				</div>
 				<div class="content-right fl">
 					<div class="content-right-left fl">
-						<a href="#" class="liImg"><img :src="item.img"></a>
+						<a href="#" class="liImg"><img :src="'http://47.106.213.218:1802/'+item.img"></a>
 					</div>
 					<div class="content-right-right fl">
 						<ul class="content-right-right-ul">
 							<li>
-								<a href="../html/details.html" class="goodsName fontSize26" v-text="item.name"></a>
+								<a href="../html/details.html" class="goodsName fontSize26" v-text="item.title"></a>
 							</li>
 							<li>
 								<span class="fontSize26 color1">颜色：[{{item.color}}]&nbsp;&nbsp;</span><span class="color1 fontSize26">尺码：{{item.size}}</span>
@@ -32,18 +32,18 @@
 				</div>
 			</div>
 			<div class="payBar clearfix">
-				<div class="check fl">
-					<span class="check-all mr0 fl iconfont" :class="{'icon-gou':isSelectAll,'check-span':!isSelectAll}" @click="selectProduct(isSelectAll)"></span><span class="mr30 fl fontSize26">全选</span>
+				<div class=" check fl ">
+					<span class="check-all mr0 fl iconfont " :class="{ 'icon-gou':isSelectAll, 'check-span':!isSelectAll} " @click="selectProduct(isSelectAll) "></span><span class="mr30 fl fontSize26 ">全选</span>
 				</div>
-				<div class="total fl">
-					<p class="p1" v-if="status=='编辑'"><span class="totalP">合计：</span><span class="tP">￥{{getTotal.totalPrice}}</span></p>
-					<p class="p1" v-if="status=='完成'"><span class="collect">移动到收藏夹</span></p>
-					<p class="p2" v-if="status=='编辑'"><span class="save">优惠：-￥{{getTotal.totalSave}}</span><span></span></p>
-					
+				<div class="total fl ">
+					<p class="p1 " v-if="status=='编辑' "><span class="totalP ">合计：</span><span class="tP ">￥{{getTotal.totalPrice}}</span></p>
+					<p class="p1 " v-if="status=='完成' "><span class="collect ">移动到收藏夹</span></p>
+					<p class="p2 " v-if="status=='编辑' "><span class="save ">优惠：-￥{{getTotal.totalSave}}</span><span></span></p>
+
 				</div>
-				<div class="toPay fl">
-					<a href="#" v-if="status=='编辑'">去结算（{{getTotal.totalNum}}）</a>
-					<a href="#" v-if="status=='完成'" class="delete" @click="deleteProduct">删除</a>
+				<div class="toPay fl ">
+					<a href="# " v-if="status=='编辑' ">去结算（{{getTotal.totalNum}}）</a>
+					<a href="# " v-if="status=='完成' " class="delete " @click="deleteProduct ">删除</a>
 				</div>
 			</div>
 		</div>
@@ -56,62 +56,29 @@
 	export default {
 		name: 'xcarContent',
 		data() {
+			$.post('http://47.106.213.218:1802/api/shoppingcart', {
+				way: 'get',
+				id: '5b36ed70413bd207bc01d15c'
+			}, (res) => {
+
+				this.goodsData = JSON.parse(res);
+				//为goodsData添加select（是否选中）字段，初始值为true
+				this.goodsData.map((item) => {
+					this.$set(item, 'select', true);
+				})
+				console.log(res)
+			});
 			return {
-				status:'编辑',
-				goodsData: [{
-						id: 1,
-						img: '../../static/images/shoes1.jpg',
-						name: 'Belle/百丽夏专柜同款白/黑白羊皮粗跟一字型女凉鞋BLA39BL7',
-						color: '白色',
-						size: '37码',
-						price: 180.99,
-						refrence:220.99,
-						num: 1,
-						total: 180.99
-					},
-					{
-						id: 2,
-						img: '../../static/images/shoes2.jpg',
-						name: 'Belle/百丽夏专柜同款白/黑白羊皮粗跟一字型女凉鞋BLA39BL7',
-						color: '黑色',
-						size: '37码',
-						price: 248.96,
-						refrence:280.99,
-						num: 1,
-						total: 180.99
-					},
-					{
-						id: 3,
-						img: '../../static/images/shoes3.jpg',
-						name: 'Belle/百丽夏专柜同款白/黑白羊皮粗跟一字型女凉鞋BLA39BL7',
-						color: '白色',
-						size: '37码',
-						price: 200.00,
-						refrence:220.99,
-						num: 1,
-						total: 180.99
-					},
-					{
-						id: 4,
-						img: '../../static/images/shoes4.jpg',
-						name: 'Belle/百丽夏专柜同款白/黑白羊皮粗跟一字型女凉鞋BLA39BL7',
-						color: '白色',
-						size: '37码',
-						price: 120.66,
-						refrence:140.99,
-						num: 1,
-						total: 180.99
-					},
-				]
+				status: '编辑',
+				goodsData: []
 			}
 		},
 		methods: {
-			toggleEdit(){
-				if(this.status=='编辑'){
+			toggleEdit() {
+				if(this.status == '编辑') {
 					this.status = '完成';
-				}
-				else if(this.status == '完成'){
-					this.status='编辑'
+				} else if(this.status == '完成') {
+					this.status = '编辑'
 				}
 			},
 			singleNumD(item) {
@@ -125,6 +92,7 @@
 			//全选与取消全选
 			selectProduct: function(_isSelect) {
 				//遍历goodsData，全部取反
+				console.log(_isSelect)
 				for(var i = 0, len = this.goodsData.length; i < len; i++) {
 					this.goodsData[i].select = !_isSelect;
 				}
@@ -145,16 +113,8 @@
 			deleteAll: function() {
 				this.goodsData = [];
 			}
-
 		},
 		computed: {
-			//			totalPay() {
-			//
-			//				var totalPay = this.goodsData.reduce((sum, item) => {
-			//					return sum + item.num * item.price;
-			//				}, 0);
-			//				return totalPay.toFixed(2);
-			//			},
 			//检测是否全选
 			isSelectAll: function() {
 				//如果goodsData中每一条数据的select都为true，返回true，否则返回false;
@@ -169,31 +129,26 @@
 						return val.select
 					}),
 					totalPrice = 0;
-					var totalrPrice = 0;
+				var totalrPrice = 0;
 				for(var i = 0, len = _proList.length; i < len; i++) {
 					//总价累加
 					totalPrice += _proList[i].num * _proList[i].price;
 					//总优惠
-					totalrPrice += _proList[i].num * _proList[i].refrence;
+					totalrPrice += _proList[i].num * _proList[i].reference;
 				}
-				var totalSave = totalrPrice-totalPrice;
+				var totalSave = totalrPrice - totalPrice;
 				//选择产品的件数就是_proList.length，总价就是totalPrice
 				return {
 					totalNum: _proList.length,
 					totalPrice: totalPrice.toFixed(2),
-					totalSave:totalSave.toFixed(2)
+					totalSave: totalSave.toFixed(2)
 				}
 			}
 
 		},
-		mounted: function() {
-			var _this = this;
-			//为goodsData添加select（是否选中）字段，初始值为true
-			this.goodsData.map(function(item) {
-				_this.$set(item, 'select', true);
-			})
-		},
-		components:{xfooter}
+		components: {
+			xfooter
+		}
 	}
 </script>
 
@@ -205,11 +160,12 @@
 	#goodsCar {
 		padding-left: 0.266666rem;
 	}
+	
 	#top {
 		padding: 0 0.266666rem;
 		position: fixed;
-		top:0;
-		left:0;
+		top: 0;
+		left: 0;
 		background: #fff;
 		width: 100%;
 	}
@@ -221,22 +177,27 @@
 		font-size: 0.48rem;
 		color: #2D2D2D;
 	}
-	.totalNum{
+	
+	.totalNum {
 		font-size: 0.48rem;
 	}
+	
 	.edit {
 		font-size: 0.48rem;
 		color: #8E8E8E;
 		margin-right: 0.613333rem;
 	}
+	
 	.main-top {
 		height: 1.333333rem;
 		width: 100%;
 	}
-	#main{
-		margin-top:1.386666rem;
+	
+	#main {
+		margin-top: 1.386666rem;
 		margin-bottom: 2.693333rem;
 	}
+	
 	.mr30 {
 		font-size: 0.373333rem;
 		color: #262626;
@@ -258,76 +219,87 @@
 		width: 0.4rem;
 		height: 0.4rem;
 		border: 0.013333rem solid #8E8E8E;
-		margin-top:1.146666rem;
+		margin-top: 1.146666rem;
 		margin-left: 0.053333rem;
-		/*background: url("../../static/shopping_cart.fw.png") no-repeat -17px -197px;*/
+		/*background: url("../../static/shopping_cart.fw.png ") no-repeat -17px -197px;*/
 	}
 	
 	.icon-gou {
 		font-size: 0.453333rem;
-		color:#FB6E67;
-		line-height:2.746666rem;
-		
-		/*background: url("../../static/shopping_cart.fw.png") no-repeat -34px -197px;*/
+		color: #FB6E67;
+		line-height: 2.746666rem;
+		/*background: url("../../static/shopping_cart.fw.png ") no-repeat -34px -197px;*/
 	}
-	
 	/*.content-middle {
 		padding-left: 24px;
 	}*/
-	.content-right{
+	
+	.content-right {
 		width: 8.666666rem;
-		margin-left:0.533333rem ;
+		margin-left: 0.533333rem;
 		border-bottom: 0.013333rem dotted #E2E2E2;
 		padding-bottom: 0.8rem;
 	}
+	
 	.content {
 		padding-top: 0.426666rem;
-		
 	}
-	.content-right-right{
+	
+	.content-right-right {
 		padding-left: 0.346666rem;
 		width: 5.973333rem;
 	}
-	.content-right-right li{
-		overflow: hidden;text-overflow: ellipsis;white-space: nowrap;display:block;
+	
+	.content-right-right li {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		display: block;
 		line-height: 0.506666rem;
 	}
-	.fontSize26{
+	
+	.fontSize26 {
 		font-size: 0.346666rem;
-		color:#323232;
+		color: #323232;
 	}
-	.color1{
-		color:#ccc;
+	
+	.color1 {
+		color: #ccc;
 	}
-	.price{
-		
+	
+	.price {
 		font-size: 0.373333rem;
-		color:#000000;
+		color: #000000;
 	}
-	.lastLi{
+	
+	.lastLi {
 		margin-top: 1rem;
 	}
-	.lastLi p{
+	
+	.lastLi p {
 		width: 2.8rem;
 		height: 0.573333rem;
 	}
-	.btn00{
+	
+	.btn00 {
 		display: inline-block;
 		width: 0.853333rem;
 		height: 0.573333rem;
-		border:0.013333rem solid #EAEAEA;
+		border: 0.013333rem solid #EAEAEA;
 		text-align: center;
 		line-height: 0.573333rem;
 	}
-	.chengeNumInput{
-		width:0.8rem;
-		height:0.573333rem;
-		border-top:0.013333rem solid #EAEAEA;
+	
+	.chengeNumInput {
+		width: 0.8rem;
+		height: 0.573333rem;
+		border-top: 0.013333rem solid #EAEAEA;
 		border-bottom: 0.013333rem solid #EAEAEA;
 		text-align: center;
 		line-height: 0.573333rem;
 	}
-	.payBar{
+	
+	.payBar {
 		padding-left: 0.266666rem;
 		width: 100%;
 		position: fixed;
@@ -337,55 +309,67 @@
 		background: #fff;
 		border-top: 0.013333rem solid #D2D2D0;
 	}
-	.total{
+	
+	.total {
 		width: 3.76rem;
 		height: 1.36rem;
-		
 	}
-	.total .p1{
-		padding-top:0.08rem;
+	
+	.total .p1 {
+		padding-top: 0.08rem;
 	}
-	.check{
+	
+	.check {
 		width: 2.773333rem;
 	}
-	.check span{
+	
+	.check span {
 		line-height: 1.36rem;
-		color:#323232;
+		color: #323232;
 	}
-	.totalP,.tP{
-		
+	
+	.totalP,
+	.tP {
 		font-size: 0.426666rem;
 	}
-	.tP{
-		color:#F04040;
+	
+	.tP {
+		color: #F04040;
 	}
-	.p2 span{
+	
+	.p2 span {
 		font-size: 0.32rem;
-		color:#A4A4A4;
+		color: #A4A4A4;
 	}
-	.toPay a{
+	
+	.toPay a {
 		display: inline-block;
 		width: 3.2rem;
 		background: #FE4A49;
-		line-height:1.36rem ;
+		line-height: 1.36rem;
 		text-align: center;
-		color:#fff;
+		color: #fff;
 		font-size: 0.48rem;
 	}
-	.main-top .icon-gou{
-		line-height:0.613333rem;
+	
+	.main-top .icon-gou {
+		line-height: 0.613333rem;
 	}
-	.payBar .icon-gou{
-		color:#FB6E67;
+	
+	.payBar .icon-gou {
+		color: #FB6E67;
 	}
-	.main-top .check-span{
-		margin-top:0.133333rem;
+	
+	.main-top .check-span {
+		margin-top: 0.133333rem;
 	}
-	.payBar .check-span{
-		margin-top:0.466666rem;
+	
+	.payBar .check-span {
+		margin-top: 0.466666rem;
 	}
-	.collect{
-		color:#FE4A49;
+	
+	.collect {
+		color: #FE4A49;
 		line-height: 1.2rem;
 		font-size: 0.346666rem;
 	}

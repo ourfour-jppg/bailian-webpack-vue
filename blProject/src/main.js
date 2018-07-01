@@ -2,10 +2,18 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import router from './router'
+
+
+import Weui from 'weui'
+import BaseCss from './css/base.css'
+
+Vue.use(Weui);
+
+
 import VantCss from './css/vant.css'
-import baseCss from './css/base.css'
 //import weui from 'weui'
 import $ from 'jquery'
+
 //状态
 import store from './store/index.js'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
@@ -16,8 +24,6 @@ import App from './App'
 
 import fonts from '../static/fonts/iconfont.css'
 
-import weui from './css/weui.css'
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -27,5 +33,4 @@ new Vue({
   store,
   components: { },
   template: '<router-view></router-view>'
-
 })

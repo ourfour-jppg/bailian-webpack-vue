@@ -21,22 +21,13 @@
 							<i class="van-sku__close-icon van-icon van-icon-close" @click="$store.state.isChooseGoods = false"><!----></i></div>
 					</div>
 					<div class="van-sku-body">
-						<!--<div class="van-sku-group-container van-hairline--bottom">
-							<div class="van-sku-row">
-								<div class="van-sku-row__title commonSize">颜色：</div><span class="van-sku-row__item commonSize" :class="{'van-sku-row__item--active':activetoggle}" @click="activetoggle=!activetoggle" v-model="activetoggle">天蓝色</span></div>
-							<div class="van-sku-row">
-								<div class="van-sku-row__title commonSize">尺寸：</div>
-								<span class="van-sku-row__item commonSize">1</span>
-								<span class="van-sku-row__item commonSize">2</span>
-							</div>
-						</div>-->
 						<div class="van-sku-stepper-stock">
 							<div class="van-sku-stepper-container">
 								<div class="van-sku__stepper-title commonSize">购买数量：</div>
 								<div class="van-sku__stepper van-stepper">
 									<button class="van-stepper__minus commonSize" @click="choosedGoods.num>1?choosedGoods.num--:choosedGoods.num"></button>
 									<input type="number" class="van-stepper__input commonSize" value="1" v-model="choosedGoods.num">
-									<button class="van-stepper__plus commonSize" @click="choosedGoods.num<choosedGoods.max_num?choosedGoods.num++:choosedGoods.num"></button>
+									<button class="van-stepper__plus commonSize" @click="choosedGoods.num<100?choosedGoods.num++:choosedGoods.num"></button>
 								</div>
 							</div>
 							<div class="van-sku__stock" style="font-size: 0.266666rem;line-height: 0.8rem;">剩余{{goodsData[0].num}}件</div>
@@ -80,20 +71,38 @@
 
 <script>
 	export default {
+		//						id: 1,
+		//						img: '../../static/images/shoes1.jpg',
+		//						name: 'Belle/百丽夏专柜同款白/黑白羊皮粗跟一字型女凉鞋BLA39BL7',
+		//						color: '白色',
+		//						size: '37码',
+		//						price: 180.99,
+		//						refrence:220.99,
+		//						num: 1,
+		//						total: 180.99
+
 		data() {
 			var goodsData = this.$root.details;
 			console.log(goodsData)
+			var goodsCar = [];
+			var choosedGoods = goodsData[0]
+			choosedGoods.num = 1
+			choosedGoods.size = '37码'
+			choosedGoods.total = 180.99
+			choosedGoods.color = '白色'
+			//			console.log('生成购物车数据》》》图片地址',choosedGoods.img)
+
+			choosedGoods.introduce = ''
+			console.log('生成购物车数据》》》图片地址', choosedGoods.img)
+
+			goodsCar.push(choosedGoods)
 			return {
 				activetoggle: false,
 				showGoodsChoose: true,
 				goodsData: goodsData,
-				choosedGoods: {
-					id: goodsData[0].id,
-					num: 1,
-					max_num: 100
-				}
+				goodsCar: goodsCar,
+				choosedGoods: choosedGoods
 			}
-
 		},
 		methods: {
 			addToCar: function(id) {
@@ -102,14 +111,52 @@
 				this.$root.goods = this.choosedGoods; //商品加入购物车信息
 				console.log(this.$root.goods)
 				this.$root.carNum = 1;
+				
 				this.$store.state.addSuccess = true;
+				setTimeout(() => {
+					this.$store.state.addSuccess = false;
+				}, 1200);
+
 				$.post('http://47.106.213.218:1802/api/shoppingcart', {
-					way:'set',
-					id:'5b36ed70413bd207bc01d15c' ,
-					data:JSON.stringify(this.choosedGoods)
-				},(res)=>{
-					console.log(JSON.parse(res))
+					way: 'get',
+					id: '5b36ed70413bd207bc01d15c',
+				}, (res) => {
+					var z = JSON.parse(res)
+					console.log('查询购物车》》',z)
+					for(var i = 0; i < z.length; i++) {
+						if(z[i].title == this.goodsCar[0].title) {
+							z[i].num += this.goodsCar[0].num
+							console.log('修改数量》》',z[i].num )
+							i = -1
+							break;
+						}
+					}
+					if(i != -1) {
+						var a=Object.assign({}, this.goodsCar[0]);
+						if(Array.isArray(a.img)) {
+							a.img = a.img[0]
+						}
+						z.push(a)
+						console.log('添加进的数据》》',a)
+					}
+					
+					$.post('http://47.106.213.218:1802/api/shoppingcart', {
+						way: 'set',
+						id: '5b36ed70413bd207bc01d15c',
+						data: JSON.stringify(z)
+					}, (res) => {
+						console.log('提交成功,购物车数据》》',JSON.parse(res))
+					});
 				});
+				//				
+
+//												$.post('http://47.106.213.218:1802/api/shoppingcart', {
+//														way: 'set',
+//														id: '5b36ed70413bd207bc01d15c',
+//														data: JSON.stringify({})
+//													}, (res) => {
+//														console.log(JSON.parse(res))
+//													});
 			},
 			topay: function() {
 				this.$root.buy = this.choosedGoods; //商品结算信息

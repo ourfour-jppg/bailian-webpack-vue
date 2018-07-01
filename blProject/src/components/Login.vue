@@ -1,8 +1,8 @@
 <template>
     <div id="new-login">
         <div class="new-login-title">
-            <a href="javascript:void(0);"  class="new-login-left">&lt;</a>
-            <div class="new-login-center"><i><img :src="logo"></i>登录</div>
+            <a href="javascript:void(0);"  class="new-login-left"><i class="iconfont icon-back"></i></a>
+            <div class="new-login-center clearfix"><img :src="logo" class="fl"><span class="fl">登录</span></div>
             <a href="#/reg"  class="new-login-right">注册</a>
         </div>
         <!-- tab切换 -->
@@ -17,13 +17,13 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">账号</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入账号">
+                        <input class="weui-input" type="text" id="new-login-username" placeholder="请输入账号">
                     </div>
                 </div>
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入密码">
+                        <input class="weui-input" type="text" id="new-login-username" placeholder="请输入密码">
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     </span>
                     <a href="#" class="new-login-forget fr">忘记密码?</a>
                 </label>
-                <div class="new-login-btn"><a href="javascript:;" class="weui-btn">登录</a></div>
+                <div class="new-login-btn"><a href="#/me" class="weui-btn">登录</a></div>
             </div>
         </div>
         <!-- 手机登录 -->
@@ -44,7 +44,7 @@
                 <div class="weui-cell">
                     <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
                     <div class="weui-cell__bd">
-                        <input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入账号">
+                        <input class="weui-input" type="text" placeholder="请输入账号">
                     </div>
                 </div>
                 <div class="weui-cell weui-cell_vcode">
@@ -66,12 +66,13 @@
                         两周内免登录
                     </span>
                 </label>
-                <div class="new-login-btn"><a href="Login" class="weui-btn">登录</a></div>
+                <div class="new-login-btn"><a href="#/me" class="weui-btn">登录</a></div>
             </div>
         </div>    
     </div> 
 </template>
 <script>
+import $ from 'jquery'
 export default {
   data () {
     return {
@@ -93,7 +94,10 @@ export default {
   }
 
 </script>
-<style>
+<style scoped>
+    i{
+        font-size: .533333rem;
+    }
     #new-login{
         display: flex;
         height: 100%;
@@ -120,13 +124,11 @@ export default {
      .new-login-title .new-login-right{
         color: red;
     }
-    .new-login-title i{
-        display: inline-block;
-        margin-right: 0.5rem; 
+    .new-login-center img{
+        margin-top: 10px;
     }
-    .new-login-title img{
-        height:.8rem;
-        line-height: .8rem;
+    .new-login-center span{
+        padding: 0 .133333rem;
     }
     .new-login-nav{
         border-bottom: .013333rem solid #dedede;
@@ -195,6 +197,8 @@ export default {
         background: #dad7d2;
         color: #fff;
         border-radius: 10px;
+        background: #e6133c;
+        color:#fff;
     }
     /* 手机获取验证码 */
     .weui-cell__ft{
